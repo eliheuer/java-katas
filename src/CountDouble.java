@@ -1,35 +1,36 @@
+// Exercise 1: Eli Heuer, CMP167 Project 2
 
 import java.util.*;
 
-/** Ask user for input, find double chars. */
+/**
+ *
+ * Asks user for input, finds and counts double chars.
+ *
+ *@author Eli Heuer, elih@protonmail.com
+ *
+ */
 public class CountDouble {
-    
     public static void main(String[] args) {
 
-	// Set types
+	// Initialize variables:
 	String userText = null;
 
-	// User input
+	// Get user input:
 	Scanner in = new Scanner(System.in);
-	System.out.print("\nEnter some text: ");
+	System.out.print("\nEnter phrase: ");
 	userText = in.nextLine();
-	
-	// Check for double chars
+
+	// Check for double chars:
 	checkForDouble(userText);
     }
 
     public static void checkForDouble(String string) {
-
-	// Debug
-	// int stringLength = string.length(); 
-	// System.out.println("string.length() = "+stringLength);
-	
-	// Set double count
+       
+	// Set double char count to zero:
 	int doubleCount = 0; 
 	    
-	// Look for double chars
+	// Look for double chars:
 	for (int i=0; i < string.length()-1; i++) {
-
 	    if (i < string.length()) {
 		char tempA = string.charAt(i);
 		char tempB = string.charAt(i+1);
@@ -37,11 +38,11 @@ public class CountDouble {
 		    doubleCount += 1;
 		}
 	    } else {
-		System.out.println("done");
+		System.out.println("Done...");
 	    }
 	}
-	// print the count of doubles
-	System.out.println("\nDouble count = "+doubleCount);
+	// Print the count of doubles:
+	System.out.println("\nThere are "+doubleCount+" character doubles.");
     }
 }
 
