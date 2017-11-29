@@ -1,43 +1,52 @@
+// Exercise 5: Eli Heuer, CMP167 Project 2
+
 import java.util.*;
 
-/** Test a string to see if it is a doubloon. */
+/**
+ *
+ * Takes a string and checks if it is a doubloon. 
+ *
+ *@author Eli Heuer, elih@protonmail.com
+ *
+ */
 public class Doubloon {
-    
     public static void main(String[] args) {
 
-	// Test string, edit to test other strings.
-	String test = "hannah";
-	
-	// input
-	boolean doubloonTest;
-	doubloonTest = isDoubloon(test);
-	System.out.println("doubloonTest = "+doubloonTest);
+	// Initialize variables:
+	String userText = null;
 
-	if () {
-	    System.out.println(test+" is a doubloon.");
+	// Get user input:
+	Scanner in = new Scanner(System.in);
+        System.out.println("Examples of doubloons: abba, redder, caucasus");
+	System.out.print("\nEnter a word or phrase: ");
+	userText = in.nextLine();
+
+	// Test input:
+	boolean doubloonTest = isDoubloon(userText);
+
+        // Print boolean result:
+	if (doubloonTest) {
+	    System.out.println("\n"+userText+" is a doubloon.");
 	} else {
-	    System.out.println(test+" is not an doubloon.");
+	    System.out.println("\n"+userText+" is not a doubloon.");
 	}
     }
-    
+
+    /** Returns true if input is a doubloon */
     public static boolean isDoubloon (String word) {
-	int length = word.length();
-	if (length <= 1) {
-	    return true;
-	}
-	char previous;
-	char current;
-	
-	System.out.println("length: "+length);
-	
-	for (int i = 1; i < length; ++i) {
-	    previous = word.charAt(i - 1);
-	    current = word.charAt(i);
-	    System.out.println(previous);
-	    if (previous > current) {
-		return false;
-	    }
-	}
-    return true;
+
+        // convert to lowercase, set flag:
+        word = word.toLowerCase();
+        boolean flag = true;
+
+        // Check for double pairs:
+        for(int i=0; i<word.length(); i++) {
+            int count=0;
+            for(int j=0; j<word.length(); j++) {
+                if(word.charAt(i)==word.charAt(j)) {count++;}
+            }
+            if (count != 2) {flag = false; break;}
+        }
+        return flag;
     }
 }
